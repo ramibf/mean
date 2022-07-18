@@ -1,0 +1,86 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-9 mx-auto text-center">
+          <h1 class="text-white">Admin</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Players</button>
+      <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Teams</button>
+      <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">matches</button>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <table class="table">
+        <tr>
+            <td>name </td>
+            <td>nb</td>
+            <td>post </td>
+            <td>img </td>
+            <td>team </td>
+        </tr>
+        <tr *ngFor='let m of players'>
+            <td>{{m.name}}</td>
+            <td>{{m.nb}}</td>
+            <td>{{m.post}}</td>
+            <td> <img [src]="m.img"></td>
+            <td>{{m.team}}</td>
+            <td>
+                <button class="btn btn-default">Display</button>
+                <button class="btn btn-info">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <table class="tablee">
+        <tr>
+            <td>Name </td>
+            <td>Foundation</td>
+            <td>Staduim </td>
+           
+        </tr>
+        <tr *ngFor='let x of teams'>
+            <td>{{x.name}}</td>
+            <td>{{x.foundation}}</td>
+            <td>{{x.staduim}}</td>
+            
+            <td>
+                <button class="btn btn-default" (click)="goToDisplay(x.id)">Display</button>
+                <button class="btn btn-info"(click)=" goToDisplayTeam(x.id)">Edit</button>
+                <button class="btn btn-danger"(click)="deleteTeam(x.id)">Delete</button>
+            </td>
+        </tr>
+    </table>
+    </div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+        <table class="table">
+            <tr>
+                <td>Team One </td>
+                <td>Team  Two</td>
+                <td>Score One </td>
+                <td>Score Two </td>
+                <td>Action </td>
+            </tr>
+            <tr *ngFor='let m of matches'>
+                <td>{{m.teamOne}}</td>
+                <td>{{m.teamTwo}}</td>
+                <td>{{m.scoreOne}}</td>
+                <td>{{m.scoreTwo}}</td>
+                <td>
+                    <button class="btn btn-default"(click)="goToDisplay(m.id)">Display</button>
+                    <button class="btn btn-info"(click)="goToEdit(m.id)">Edit</button>
+                    <button class="btn btn-danger"(click)="deleteMatch(m.id)">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+</div>
